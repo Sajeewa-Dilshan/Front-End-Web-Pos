@@ -69,9 +69,9 @@ delb.innerText="sdfsdfasf";
 td=tr.insertCell(1);
 td.appendChild(delb);*/
 
-var remButton=document.getElementById("rem-button");
+/*var remButton=document.getElementById("rem-button");
 
-var saveButton=document.getElementById("btn-save");
+var saveButton=document.getElementById("btn-save");*/
 
 
 
@@ -141,6 +141,8 @@ function saveDetails(){
         var txtName = document.getElementById("txt-name").value;
         var txtAddress=document.getElementById("txt-address").value;
 
+
+
         var inputData=[txtid,txtName,txtAddress];
 
 
@@ -172,7 +174,70 @@ function saveDetails(){
 
 saveButton.addEventListener("click",function (){
 
-    var tableRow
+    var customerIdElement = document.getElementById("txt-id");
+    var customerNameElement = document.getElementById("txt-name");
+    var customerAddressElement=document.getElementById("txt-address");
+    var tableData=[];
+    var footerElement = document.querySelector('#table-footer');
+
+    var tableRowElement=document.createElement('tr');
+
+    var cellIdElement =document.createElement('td');
+    cellIdElement.innerText=customerIdElement.value;
+    cellIdElement.className='text-center';
+    tableRowElement.appendChild(cellIdElement);
+
+    var cellNameElement=document.createElement('td');
+    cellNameElement.innerText=customerNameElement.value;
+    tableRowElement.appendChild(cellNameElement);
+
+    var cellAddressElement=document.createElement('td');
+    cellAddressElement.innerText=customerAddressElement.value;
+    tableRowElement.appendChild(customerAddressElement);
+
+
+    var cellBinIconElement= document.createElement('td');
+    var binIconElement=document.createElement('i');
+    binIconElement.className="fas fa-trash";
+    cellBinIconElement.appendChild(binIconElement);
+    cellBinIconElement.className='text-center';
+    tableRowElement.appendChild(cellBinIconElement);
+    cellBinIconElement.addEventListener('click',function (){
+        if(confirm("Dou you want to delete")){
+            for(var i=0;i<tableData.length;i++){
+                if(tableData[i]===tableRowElement){
+                    tableData.splice(i,1);
+                        if(tableData.length===0){
+                            footerElement.style.visibility='visible';
+
+
+                        }
+                    }
+                }tableRowElement.remove();
+
+
+        }
+
+    });
+
+    cellBinIconElement.addEventListener('mouseover',function (){
+        binIconElement.className='fas fa-trash-alt';
+    });
+
+    cellBinIconElement.addEventListener('mouseout',function (){
+        binIconElement.className='fas fa-trash';
+    });
+
+    tableRowElement.addEventListener('click',function (){
+        customerIdElement.value = tableRowElement.children[0].innerText;
+        customerIdElement.readOnly = true;
+        customerNameElement.value = tableRowElement.children[1].innerText;
+        customerAddressElement.value = tableRowElement.children[2].innerText;
+    });
+
+    tableData.push(tableRowElement);
+    footerElement.style.visibility='hidden';
+    cusTable.appendChild(tableRowElement);
 
 
 
@@ -200,7 +265,7 @@ saveButton.addEventListener("click", function getInputValue(){
 
 
 
-remButton.addEventListener("mouseenter",function (){
+/*remButton.addEventListener("mouseenter",function (){
    remButton.style.backgroundColor="red";
 });
 
@@ -212,5 +277,5 @@ remButton.addEventListener("mouseleave",function (){
     remButton.style.backgroundColor="purple";
 
 
-});
+});*/
 
