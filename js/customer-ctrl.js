@@ -70,22 +70,39 @@ td.appendChild(delb);
 
 var remButton=document.getElementById("rem-button");
 
+var saveButton=document.getElementById("btn-save");
 
 
 
 
 
+var txtid = document.getElementById("txt-id").value;
 
 remButton.addEventListener("click", function getInputValue(){
     // Selecting the input element and get its value
-    var inputVal = document.getElementById("txt-id").value;
+    var txtid = document.getElementById("txt-id").value;
 
-    if(/([C])\d{3}/.test(inputVal)){
+    if(/([C])\d{3}/.test(txtid)){
         alert("success");
     }
 
-    alert(inputVal);
+    alert(txtid);
 });
+
+
+saveButton.addEventListener("click", function getInputValue(){
+    // Selecting the input element and get its value
+    var txtid = document.getElementById("txt-id").value;
+
+    if(/([C])\d{3}/.test(txtid)){
+        alert("success");
+    }
+
+    alert(txtid);
+});
+
+
+
 
 remButton.addEventListener("mouseenter",function (){
    remButton.style.backgroundColor="red";
@@ -97,6 +114,6 @@ remButton.addEventListener("mouseenter",function (){
 
 remButton.addEventListener("mouseleave",function (){
     remButton.style.backgroundColor="purple";
-    console.log("safs"+inp);
+
 
 });
